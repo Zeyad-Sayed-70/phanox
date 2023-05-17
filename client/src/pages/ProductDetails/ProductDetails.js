@@ -22,7 +22,7 @@ const ProductDetails = () => {
     const { id } = useParams()
     const [productData, setProductData] = useState(data)
     const [imgSelected, setImgSelected] = useState('')
-    const [ itemData, setItemData ] = useState({})
+    const [itemData, setItemData] = useState({})
 
     useEffect(() => {
         dispatch(getProduct(id))
@@ -44,13 +44,14 @@ const ProductDetails = () => {
 
     const addItem = () => {
       const isFound = cartData.items.some(item => item.productId === itemData.productId )
-
       if ( !isFound ) {
         setCartData({items: [itemData, ...cartData.items]})
       } else {
         const newCartData = cartData.items.filter(item => item.productId !== itemData.productId)
         setCartData({ items: newCartData})
       }
+      console.log(itemData)
+      console.log(cartData)
     }
 
     const handleCheckOut = async () => {

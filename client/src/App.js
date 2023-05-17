@@ -12,6 +12,7 @@ const App = () => {
   const [cartData, setCartData] = useState(JSON.parse(localStorage.getItem('cart_data')) || initialCartData)
   
   useEffect(() => {
+    console.log(cartData, 'cd from app.js')
     localStorage.setItem('cart_data', JSON.stringify(cartData))
   }, [cartData])
 

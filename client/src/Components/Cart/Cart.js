@@ -22,8 +22,6 @@ const Cart = ({setIsCart}) => {
         totalPrice += (item.price - (item.price * (item.discount / 100))) * item.quantity
     })
     setTotal(totalPrice)
-
-    console.log(cartData)
   }, [cartData])
 
   const decItemQuantity = (id) => {
