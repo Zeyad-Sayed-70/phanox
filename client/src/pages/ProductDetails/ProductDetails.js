@@ -31,6 +31,8 @@ const ProductDetails = () => {
     useEffect(() => {
         const product = data?.data?.product
 
+        if ( product === undefined ) return
+         
         setProductData(product)
         setImgSelected(product?.images[0])
         setItemData({
