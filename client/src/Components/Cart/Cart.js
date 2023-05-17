@@ -10,6 +10,7 @@ import CartDataAPI from '../../cartDataAPI'
 import axios from 'axios'
 import getStripe from "../../stripe";
 import { BACK_END_URL } from "../../constant";
+import getImageUrl from "../../utils/getImageUrl";
 
 const Cart = ({setIsCart}) => {
   const {cartData, setCartData} = useContext(CartDataAPI)
@@ -59,7 +60,6 @@ const Cart = ({setIsCart}) => {
     const { data } = await response;
 
     stripe.redirectToCheckout({ sessionId: data.id });
-
   }
 
   return (
@@ -75,7 +75,7 @@ const Cart = ({setIsCart}) => {
             {cartData.items.map((item, ind) => (
                 <div key={item.productId} className="d-flex  gap-3 px-3 my-3">
                 <Col className="col-5 col-md-4">
-                    <div className="img"><img className="w-100 h-100" src={item.images[0]} alt={item.title} /></div>
+                    <div className="img"><img className="w-100 h-100" src={getImageUrl(item.images[0])} alt={item.title} /></div>
                 </Col>
                 <Col className="col-7 col-md-8 d-flex flex-column gap-3">
                     <div className="d-flex flex-wrap justify-content-between align-items-center">

@@ -44,7 +44,7 @@ const postProduct = async (req, res) => {
         const images = []
 
         for(let i = 0; i < req.files.length; i++) {
-            const path = `http://${req.hostname}:5000/uploads/${req.files[i].filename}`
+            const path = `${req.files[i].filename}`
             images.push(path)
         }
 

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postProduct, delProduct } from '../../../features/admin/adminSlice'
 import {v4} from 'uuid'
 import CloseIcon from '@mui/icons-material/Close';
+import getImageUrl from '../../../utils/getImageUrl';
 const dataSchema = {
     title: '',
     details: '',
@@ -61,7 +62,7 @@ const Content = ({prodata}) => {
         <ul style={{maxHeight: '400px', overflow: 'auto'}}>
             {prodata?.map(pro => (
                 <li key={pro._id} style={{backgroundColor: 'white'}} className="p-2 px-4">
-                <Col className="col-1" style={{width: '50px'}}><img className='w-100' src={pro.images[0]} alt={pro.title} /></Col>
+                <Col className="col-1" style={{width: '50px'}}><img className='w-100' src={getImageUrl(pro.images[0])} alt={pro.title} /></Col>
                 <div className="d-flex flex-column ps-4 mb-2">
                     <Col className="d-flex align-items-center">{pro.title}</Col>
                     <Rating name="read-only" value={pro.rating} readOnly style={{fontSize: '25px'}} />

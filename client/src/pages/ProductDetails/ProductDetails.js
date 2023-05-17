@@ -13,6 +13,7 @@ import CartDataAPI from "../../cartDataAPI"
 import getStripe from "../../stripe"
 import axios from 'axios'
 import { BACK_END_URL } from "../../constant"
+import getImageUrl from "../../utils/getImageUrl"
 
 const ProductDetails = () => {
     const { data, isLoading } = useSelector(state => state.product)
@@ -64,8 +65,6 @@ const ProductDetails = () => {
 
       const stripe = await getStripe()
 
-      console.log(newProductData)
-
       const response = await axios.post(`${BACK_END_URL}/create-checkout-session`, [newProductData])
 
       if ( response.status === 500 ) return
@@ -84,10 +83,10 @@ const ProductDetails = () => {
         (
         <>
         <Col className="col-12 col-lg-5">
-            <div className="main_img p-4">{!imgSelected ? <Spinner animation="grow" variant="danger" className="m-auto" /> : <img className="w-100" src={imgSelected} alt={productData?.title} />}</div>
+            <div className="main_img p-4">{!imgSelected ? <Spinner animation="grow" variant="danger" className="m-auto" /> : <img className="w-100" src={getImageUrl(imgSelected)} alt={productData?.title} />}</div>
             <div className="sec_img d-flex mt-3 p-2">
                 {productData?.images?.map((img, ind) => (
-                    <Col key={ind} className={`col-3 p-3 img d-flex align-items-center ${imgSelected === img ? 'bg-light' : ''}`} onClick={() => setImgSelected(img)} ><img className="w-100" src={img} alt={'image' + ind} /></Col>
+                    <Col key={ind} className={`col-3 p-3 img d-flex align-items-center ${imgSelected === img ? 'bg-light' : ''}`} onClick={() => setImgSelected(img)} ><img className="w-100" src={getImageUrl(img)} alt={'image' + ind} /></Col>
                 ))}
                 </div>
         </Col>
@@ -118,7 +117,7 @@ const ProductDetails = () => {
           </div>
           <div className="mt-5 d-flex gap-4">
             <Button style={{width: '200px', borderRadius: '0'}} variant="outlined" color="error" onClick={() => addItem()}>{cartData.items.some(item => item.productId === itemData.productId ) ? 'Remove from cart' : 'Add to cart'}</Button>
-            <Button style={{width: '200px', borderRadius: '0'}} variant="contained" color="error" onClick={handleCheckOut}>By now</Button>
+            <Button style={{width: '200px', borderRadius: '0'}} variant="contained" color="error" onClick={handleCheckOut}>Buy now</Button>
           </div>
         </Col>}
         </>

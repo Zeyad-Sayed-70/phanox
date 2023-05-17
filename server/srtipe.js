@@ -28,7 +28,7 @@ const handler = async (req, res) => {
                         currency: 'usd',
                         product_data: {
                             name: item.title,
-                            images: [item.images[0]],
+                            images: [`${process.env.BACKEND_URL}/uploads/${item.images[0]}`],
                         },
                         unit_amount: item.price * 100,
                     },

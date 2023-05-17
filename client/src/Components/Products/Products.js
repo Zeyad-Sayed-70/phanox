@@ -1,5 +1,6 @@
 import { Col, Container, Spinner } from 'react-bootstrap'
 import ProductStyled from './ProductsStyled.styled'
+import getImageUrl from '../../utils/getImageUrl'
 
 const Products = ({products}) => {
   return (
@@ -15,7 +16,7 @@ const Products = ({products}) => {
                     return (
                     <div key={ind} className="product px-2 mb-4">
                         <a href={`products/${product.productId}`}>
-                            <div className="d-flex justify-content-center mb-1"><img src={product.images[0]} alt={product.title} /></div>
+                            <div className="d-flex justify-content-center mb-1"><img src={getImageUrl(product.images[0])} alt={product.title} /></div>
                             <span className="title d-block ms-2">{product.title.length >= 30 ? product.title.slice(0, 30) + '...' : product.title}</span>
                             { product.discount !== 0 && <span className="fw-bold ms-2">${(product.price - (product.price * (product.discount / 100))).toFixed(2)}</span>}
                             <span style={{ textDecoration: product.discount !== 0 ? 'line-through' : 'none', color: product.discount !== 0 ? '#929292' : '#333'}} className="fw-bold ms-2">${product.price}</span>

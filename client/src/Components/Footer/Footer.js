@@ -8,7 +8,7 @@ import { VERSION } from "../../constant"
 const CopyRights = () => {
     return (
         <div style={{ color: '#324d67' }} className="mt-5 pt-5 d-flex flex-column align-items-center">
-            <span className="d-block fw-bold mb-2">©2022 Phanox Alll Rights Reserved v{VERSION}</span>
+            <span className="d-block fw-bold mb-2">©2023 Phanox Alll Rights Reserved v{VERSION}</span>
             <div>
                 <IconButton style={{ height: '40px' }}><Link href="#" style={{ color: '#324d67' }}><FacebookIcon /></Link></IconButton>
                 <IconButton style={{ height: '40px' }}><Link href="#" style={{ color: '#324d67' }}><InstagramIcon /></Link></IconButton>
