@@ -29,15 +29,17 @@ const ProductDetails = () => {
     }, [])
 
     useEffect(() => {
-        setProductData(data?.data?.product)
-        setImgSelected(data?.data?.product?.images[0])
+        const product = data?.data?.product
+
+        setProductData(product)
+        setImgSelected(product?.images[0])
         setItemData({
-          productId: productData?.productId,
-          title: productData?.title,
-          price: productData?.price,
-          discount: productData?.discount,
-          images: productData?.images,
-          rating: productData?.rating,
+          productId: product.productId,
+          title: product.title,
+          price: product.price,
+          discount: product.discount,
+          images: product.images,
+          rating: product.rating,
           quantity: 1,
         })
     }, [data, isLoading])
