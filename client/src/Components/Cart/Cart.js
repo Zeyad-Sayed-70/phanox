@@ -21,7 +21,9 @@ const Cart = ({setIsCart}) => {
     cartData.items.map(item => {
         totalPrice += (item.price - (item.price * (item.discount / 100))) * item.quantity
     })
-    setTotal(totalPrice) 
+    setTotal(totalPrice)
+
+    console.log(cartData)
   }, [cartData])
 
   const decItemQuantity = (id) => {
@@ -62,6 +64,7 @@ const Cart = ({setIsCart}) => {
     stripe.redirectToCheckout({ sessionId: data.id });
   }
 
+
   return (
     <>
     <CartStyled>
@@ -75,7 +78,7 @@ const Cart = ({setIsCart}) => {
             {cartData.items.map((item, ind) => (
                 <div key={item.productId} className="d-flex  gap-3 px-3 my-3">
                 <Col className="col-5 col-md-4">
-                    <div className="img"><img className="w-100 h-100" src={getImageUrl(item?.images[0])} alt={item?.title} /></div>
+                    <div className="img"><img className="w-100 h-100" src={getImageUrl(item?.images?.at(0))} alt={item?.title} /></div>
                 </Col>
                 <Col className="col-7 col-md-8 d-flex flex-column gap-3">
                     <div className="d-flex flex-wrap justify-content-between align-items-center">
