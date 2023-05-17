@@ -22,7 +22,7 @@ const mongodb_uri = process.env.MONGODB_URI
 
 mongoose.connect(mongodb_uri).then(() => {
     try {
-        server.listen(process.env.PORT || 5000, () => {
+        server.listen(port, () => {
             console.log(`server is running on port: ${port}`)
         })
     } catch (error) {
