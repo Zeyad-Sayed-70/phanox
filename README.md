@@ -1,5 +1,5 @@
 ## Phanox Store
-> [phanox store](https://phanox-store.netlify.app) is an e-commerce platform built using MERN technologies (MongoDB, Express, React, Node.js). The store provides a simple and smooth user interface for customers to browse and purchase products easily and conveniently.
+> [phanox store](https://phanox-store.netlify.app) is an simple e-commerce platform built using MERN technologies (MongoDB, Express, React, Node.js). The store provides a simple and smooth user interface for customers to browse and purchase products easily and conveniently.
 
 ## Features
 - Displaying products attractively and clearly
